@@ -33,7 +33,7 @@ public class Generator {
         List<Parameter> parameters = new ArrayList<Parameter>();
         while (i.get() < line.length()) {
             char ch = line.charAt(i.get());
-            if (ch!=' ') {
+            if (ch != ' ') {
                 token = readType(i, line);
             }
             i.incrementAndGet();
@@ -42,11 +42,21 @@ public class Generator {
         return null;
     }
 
-    private static String readType(AtomicInteger i, String line) {
+    private static String readToken(AtomicInteger i, String line) {
         int level = 0;
-        while (i.get()<line.length() && (level >0 || (ch!=' ' && ch!='(' && ch!=')')){
-            
+        char ch = line.charAt(i.get());
+        StringBuilder s = new StringBuilder();
+        while (i.get() < line.length() && (level > 0 || (ch != ' ' && ch != '(' && ch != ')'))) {
+            if (ch == '<')
+                level++;
+            if (ch == '>')
+                level--;
+            s.append(ch);
+            i.incrementAndGet();
+            if (i.get() < line.length())
+                ch = line.charAt(i.get());
         }
+        return s.toString();
     }
 
     private static class Sig {
@@ -54,6 +64,8 @@ public class Generator {
         String methodReturnType;
         String methodName;
         List<Parameter> parameters;
+
+        s
 
         Sig(String typeParameters, String methodReturnType, String methodName,
                 List<Parameter> parameters) {
