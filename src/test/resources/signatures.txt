@@ -1,232 +1,229 @@
-<R> ParallelObservable<R> lift(final Operator<? extends R, ? super T> lift) {
-ParallelObservable<Observable<T>> nest() {
-Observable<Boolean> all(Func1<? super T, Boolean> predicate) {
-Observable<T> ambWith(Observable<? extends T> t1) {
-Observable<T> asObservable() {
-<TClosing> Observable<List<T>> buffer(Func0<? extends Observable<? extends TClosing>> bufferClosingSelector) {
-Observable<List<T>> buffer(int count) {
-Observable<List<T>> buffer(int count, int skip) {
-Observable<List<T>> buffer(long timespan, long timeshift, TimeUnit unit) {
-Observable<List<T>> buffer(long timespan, long timeshift, TimeUnit unit, Scheduler scheduler) {
-Observable<List<T>> buffer(long timespan, TimeUnit unit) {
-Observable<List<T>> buffer(long timespan, TimeUnit unit, int count) {
-Observable<List<T>> buffer(long timespan, TimeUnit unit, int count, Scheduler scheduler) {
-Observable<List<T>> buffer(long timespan, TimeUnit unit, Scheduler scheduler) {
-<TOpening, TClosing> Observable<List<T>> buffer(Observable<? extends TOpening> bufferOpenings, Func1<? super TOpening, ? extends Observable<? extends TClosing>> bufferClosingSelector) {
-<B> Observable<List<T>> buffer(Observable<B> boundary) {
-<B> Observable<List<T>> buffer(Observable<B> boundary, int initialCapacity) {
-Observable<T> cache() {
-Observable<T> cache(int capacity) {
-<R> Observable<R> cast(final Class<R> klass) {
-<R> Observable<R> collect(R state, final Action2<R, ? super T> collector) {
-<R> Observable<R> concatMap(Func1<? super T, ? extends Observable<? extends R>> func) {
-Observable<T> concatWith(Observable<? extends T> t1) {
-Observable<Boolean> contains(final Object element) {
-Observable<Integer> count() {
-<U> Observable<T> debounce(Func1<? super T, ? extends Observable<U>> debounceSelector) {
-Observable<T> debounce(long timeout, TimeUnit unit) {
-Observable<T> debounce(long timeout, TimeUnit unit, Scheduler scheduler) {
-Observable<T> defaultIfEmpty(T defaultValue) {
-<U, V> Observable<T> delay(
-<U> Observable<T> delay(Func1<? super T, ? extends Observable<U>> itemDelay) {
-Observable<T> delay(long delay, TimeUnit unit) {
-Observable<T> delay(long delay, TimeUnit unit, Scheduler scheduler) {
-Observable<T> delaySubscription(long delay, TimeUnit unit) {
-Observable<T> delaySubscription(long delay, TimeUnit unit, Scheduler scheduler) {
-<T2> Observable<T2> dematerialize() {
-Observable<T> distinct() {
-<U> Observable<T> distinct(Func1<? super T, ? extends U> keySelector) {
-Observable<T> distinctUntilChanged() {
-<U> Observable<T> distinctUntilChanged(Func1<? super T, ? extends U> keySelector) {
-Observable<T> doOnCompleted(final Action0 onCompleted) {
-Observable<T> doOnEach(final Action1<Notification<? super T>> onNotification) {
-Observable<T> doOnEach(Observer<? super T> observer) {
-Observable<T> doOnError(final Action1<Throwable> onError) {
-Observable<T> doOnNext(final Action1<? super T> onNext) {
-Observable<T> doOnSubscribe(final Action0 subscribe) {
-Observable<T> doOnTerminate(final Action0 onTerminate) {
-Observable<T> doOnUnsubscribe(final Action0 unsubscribe) {
-Observable<T> elementAt(int index) {
-Observable<T> elementAtOrDefault(int index, T defaultValue) {
-Observable<Boolean> exists(Func1<? super T, Boolean> predicate) {
-Observable<T> filter(Func1<? super T, Boolean> predicate) {
-Observable<T> finallyDo(Action0 action) {
-Observable<T> first() {
-Observable<T> first(Func1<? super T, Boolean> predicate) {
-Observable<T> firstOrDefault(T defaultValue) {
-Observable<T> firstOrDefault(T defaultValue, Func1<? super T, Boolean> predicate) {
-<R> Observable<R> flatMap(Func1<? super T, ? extends Observable<? extends R>> func) {
-<R> Observable<R> flatMap(
-<U, R> Observable<R> flatMap(final Func1<? super T, ? extends Observable<? extends U>> collectionSelector,
-<R> Observable<R> flatMapIterable(Func1<? super T, ? extends Iterable<? extends R>> collectionSelector) {
-<U, R> Observable<R> flatMapIterable(Func1<? super T, ? extends Iterable<? extends U>> collectionSelector,
-<K, R> Observable<GroupedObservable<K, R>> groupBy(final Func1<? super T, ? extends K> keySelector, final Func1<? super T, ? extends R> elementSelector) {
-<K> Observable<GroupedObservable<K, T>> groupBy(final Func1<? super T, ? extends K> keySelector) {
-<TKey, TDuration> Observable<GroupedObservable<TKey, T>> groupByUntil(Func1<? super T, ? extends TKey> keySelector, Func1<? super GroupedObservable<TKey, T>, ? extends Observable<? extends TDuration>> durationSelector) {
-<TKey, TValue, TDuration> Observable<GroupedObservable<TKey, TValue>> groupByUntil(Func1<? super T, ? extends TKey> keySelector, Func1<? super T, ? extends TValue> valueSelector, Func1<? super GroupedObservable<TKey, TValue>, ? extends Observable<? extends TDuration>> durationSelector) {
-<T2, D1, D2, R> Observable<R> groupJoin(Observable<T2> right, Func1<? super T, ? extends Observable<D1>> leftDuration,
-Observable<T> ignoreElements() {
-Observable<Boolean> isEmpty() {
-<TRight, TLeftDuration, TRightDuration, R> Observable<R> join(Observable<TRight> right, Func1<T, Observable<TLeftDuration>> leftDurationSelector,
-Observable<T> last() {
-Observable<T> last(Func1<? super T, Boolean> predicate) {
-Observable<T> lastOrDefault(T defaultValue) {
-Observable<T> lastOrDefault(T defaultValue, Func1<? super T, Boolean> predicate) {
-Observable<T> limit(int num) {
-Observable<Long> longCount() {
-<R> Observable<R> map(Func1<? super T, ? extends R> func) {
-Observable<Notification<T>> materialize() {
-<R> Observable<R> mergeMap(Func1<? super T, ? extends Observable<? extends R>> func) {
-<R> Observable<R> mergeMap(
+Observable<Boolean> all(Func1<? super T, Boolean> predicate) 
+Observable<T> ambWith(Observable<? extends T> t1) 
+Observable<T> asObservable() 
+<TClosing> Observable<List<T>> buffer(Func0<? extends Observable<? extends TClosing>> bufferClosingSelector) 
+Observable<List<T>> buffer(int count) 
+Observable<List<T>> buffer(int count, int skip) 
+Observable<List<T>> buffer(long timespan, long timeshift, TimeUnit unit) 
+Observable<List<T>> buffer(long timespan, long timeshift, TimeUnit unit, Scheduler scheduler) 
+Observable<List<T>> buffer(long timespan, TimeUnit unit) 
+Observable<List<T>> buffer(long timespan, TimeUnit unit, int count) 
+Observable<List<T>> buffer(long timespan, TimeUnit unit, int count, Scheduler scheduler) 
+Observable<List<T>> buffer(long timespan, TimeUnit unit, Scheduler scheduler) 
+<TOpening, TClosing> Observable<List<T>> buffer(Observable<? extends TOpening> bufferOpenings, Func1<? super TOpening, ? extends Observable<? extends TClosing>> bufferClosingSelector) 
+<B> Observable<List<T>> buffer(Observable<B> boundary) 
+<B> Observable<List<T>> buffer(Observable<B> boundary, int initialCapacity) 
+Observable<T> cache() 
+Observable<T> cache(int capacity) 
+<R> Observable<R> cast( Class<R> klass) 
+<R> Observable<R> collect(R state,  Action2<R, ? super T> collector) 
+<R> Observable<R> concatMap(Func1<? super T, ? extends Observable<? extends R>> func) 
+Observable<T> concatWith(Observable<? extends T> t1) 
+Observable<Boolean> contains( Object element) 
+Observable<Integer> count() 
+<U> Observable<T> debounce(Func1<? super T, ? extends Observable<U>> debounceSelector) 
+Observable<T> debounce(long timeout, TimeUnit unit) 
+Observable<T> debounce(long timeout, TimeUnit unit, Scheduler scheduler) 
+Observable<T> defaultIfEmpty(T defaultValue) 
+<U> Observable<T> delay(Func1<? super T, ? extends Observable<U>> itemDelay) 
+Observable<T> delay(long delay, TimeUnit unit) 
+Observable<T> delay(long delay, TimeUnit unit, Scheduler scheduler) 
+Observable<T> delaySubscription(long delay, TimeUnit unit) 
+Observable<T> delaySubscription(long delay, TimeUnit unit, Scheduler scheduler) 
+<T2> Observable<T2> dematerialize() 
+Observable<T> distinct() 
+<U> Observable<T> distinct(Func1<? super T, ? extends U> keySelector) 
+Observable<T> distinctUntilChanged() 
+<U> Observable<T> distinctUntilChanged(Func1<? super T, ? extends U> keySelector) 
+Observable<T> doOnCompleted( Action0 onCompleted) 
+Observable<T> doOnEach( Action1<Notification<? super T>> onNotification) 
+Observable<T> doOnEach(Observer<? super T> observer) 
+Observable<T> doOnError( Action1<Throwable> onError) 
+Observable<T> doOnNext( Action1<? super T> onNext) 
+Observable<T> doOnSubscribe( Action0 subscribe) 
+Observable<T> doOnTerminate( Action0 onTerminate) 
+Observable<T> doOnUnsubscribe( Action0 unsubscribe) 
+Observable<T> elementAt(int index) 
+Observable<T> elementAtOrDefault(int index, T defaultValue) 
+Observable<Boolean> exists(Func1<? super T, Boolean> predicate) 
+Observable<T> filter(Func1<? super T, Boolean> predicate) 
+Observable<T> finallyDo(Action0 action) 
+Observable<T> first() 
+Observable<T> first(Func1<? super T, Boolean> predicate) 
+Observable<T> firstOrDefault(T defaultValue) 
+Observable<T> firstOrDefault(T defaultValue, Func1<? super T, Boolean> predicate) 
+<R> Observable<R> flatMap(Func1<? super T, ? extends Observable<? extends R>> func) 
+<R> Observable<R> flatMap(Func1<? super T, ? extends Observable<? extends R>> onNext, Func1<? super Throwable, ? extends Observable<? extends R>> onError,            Func0<? extends Observable<? extends R>> onCompleted) 
+<U, R> Observable<R> flatMap(  Func1<? super T, ? extends Observable<? extends U>> collectionSelector, Func2<? super T, ? super U, ? extends R> resultSelector)
+<R> Observable<R> flatMapIterable(Func1<? super T, ? extends Iterable<? extends R>> collectionSelector) 
+<U, R> Observable<R> flatMapIterable(Func1<? super T, ? extends Iterable<? extends U>> collectionSelector,            Func2<? super T, ? super U, ? extends R> resultSelector)
+<K, R> Observable<GroupedObservable<K, R>> groupBy( Func1<? super T, ? extends K> keySelector,  Func1<? super T, ? extends R> elementSelector) 
+<K> Observable<GroupedObservable<K, T>> groupBy( Func1<? super T, ? extends K> keySelector) 
+<TKey, TDuration> Observable<GroupedObservable<TKey, T>> groupByUntil(Func1<? super T, ? extends TKey> keySelector, Func1<? super GroupedObservable<TKey, T>, ? extends Observable<? extends TDuration>> durationSelector) 
+<TKey, TValue, TDuration> Observable<GroupedObservable<TKey, TValue>> groupByUntil(Func1<? super T, ? extends TKey> keySelector, Func1<? super T, ? extends TValue> valueSelector, Func1<? super GroupedObservable<TKey, TValue>, ? extends Observable<? extends TDuration>> durationSelector) 
+<T2, D1, D2, R> Observable<R> groupJoin(Observable<T2> right, Func1<? super T, ? extends Observable<D1>> leftDuration,            Func1<? super T2, ? extends Observable<D2>> rightDuration,            Func2<? super T, ? super Observable<T2>, ? extends R> resultSelector)
+Observable<T> ignoreElements() 
+Observable<Boolean> isEmpty() 
+<TRight, TLeftDuration, TRightDuration, R> Observable<R> join(Observable<TRight> right, Func1<T, Observable<TLeftDuration>> leftDurationSelector,            Func1<TRight, Observable<TRightDuration>> rightDurationSelector,            Func2<T, TRight, R> resultSelector)
+Observable<T> last() 
+Observable<T> last(Func1<? super T, Boolean> predicate) 
+Observable<T> lastOrDefault(T defaultValue) 
+Observable<T> lastOrDefault(T defaultValue, Func1<? super T, Boolean> predicate) 
+Observable<T> limit(int num) 
+Observable<Long> longCount() 
+<R> Observable<R> map(Func1<? super T, ? extends R> func) 
+Observable<Notification<T>> materialize() 
+<R> Observable<R> mergeMap(Func1<? super T, ? extends Observable<? extends R>> func) 
+<R> Observable<R> mergeMap(Func1<? super T, ? extends Observable<? extends R>> onNext, Func1<? super Throwable, ? extends Observable<? extends R>> onError, Func0<? extends Observable<? extends R>> onCompleted)
 <U, R> Observable<R> mergeMap(Func1<? super T, ? extends Observable<? extends U>> collectionSelector,
-<R> Observable<R> mergeMapIterable(Func1<? super T, ? extends Iterable<? extends R>> collectionSelector) {
-<U, R> Observable<R> mergeMapIterable(Func1<? super T, ? extends Iterable<? extends U>> collectionSelector,
-Observable<T> mergeWith(Observable<? extends T> t1) {
-<TIntermediate, TResult> Observable<TResult> multicast(
-<R> ConnectableObservable<R> multicast(final Subject<? super T, ? extends R> subject) {
-<R> ConnectableObservable<R> multicast(Func0<? extends Subject<? super T, ? extends R>> subjectFactory) {
-Observable<T> observeOn(Scheduler scheduler) {
-<R> Observable<R> ofType(final Class<R> klass) {
-Observable<T> onBackpressureBuffer() {
-Observable<T> onBackpressureDrop() {
-Observable<T> onErrorResumeNext(final Func1<Throwable, ? extends Observable<? extends T>> resumeFunction) {
-Observable<T> onErrorResumeNext(final Observable<? extends T> resumeSequence) {
-Observable<T> onErrorReturn(Func1<Throwable, ? extends T> resumeFunction) {
-Observable<T> onErrorFlatMap(final Func1<OnErrorThrowable, ? extends Observable<? extends T>> resumeFunction) {
-Observable<T> onExceptionResumeNext(final Observable<? extends T> resumeSequence) {
-<R> Observable<R> parallel(Func1<Observable<T>, Observable<R>> f) {
-<R> Observable<R> parallel(final Func1<Observable<T>, Observable<R>> f, final Scheduler s) {
-ConnectableObservable<T> publish() {
-<R> Observable<R> publish(Func1<? super Observable<T>, ? extends Observable<R>> selector) {
-<R> Observable<R> publish(Func1<? super Observable<T>, ? extends Observable<R>> selector, final T initialValue) {
-ConnectableObservable<T> publish(final T initialValue) {
-ConnectableObservable<T> publishLast() {
-<R> Observable<R> publishLast(Func1<? super Observable<T>, ? extends Observable<R>> selector) {
-Observable<T> reduce(Func2<T, T, T> accumulator) {
-<R> Observable<R> reduce(R initialValue, Func2<R, ? super T, R> accumulator) {
-Observable<T> repeat() {
-Observable<T> repeat(Scheduler scheduler) {
-Observable<T> repeat(final long count) {
-Observable<T> repeat(final long count, Scheduler scheduler) {
-Observable<T> repeatWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler, Scheduler scheduler) {
-Observable<T> repeatWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) {
-ConnectableObservable<T> replay() {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, final int bufferSize) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, int bufferSize, long time, TimeUnit unit) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, final int bufferSize, final long time, final TimeUnit unit, final Scheduler scheduler) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, final int bufferSize, final Scheduler scheduler) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, long time, TimeUnit unit) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, final long time, final TimeUnit unit, final Scheduler scheduler) {
-<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, final Scheduler scheduler) {
-ConnectableObservable<T> replay(final int bufferSize) {
-ConnectableObservable<T> replay(int bufferSize, long time, TimeUnit unit) {
-ConnectableObservable<T> replay(final int bufferSize, final long time, final TimeUnit unit, final Scheduler scheduler) {
-ConnectableObservable<T> replay(final int bufferSize, final Scheduler scheduler) {
-ConnectableObservable<T> replay(long time, TimeUnit unit) {
-ConnectableObservable<T> replay(final long time, final TimeUnit unit, final Scheduler scheduler) {
-ConnectableObservable<T> replay(final Scheduler scheduler) {
-Observable<T> retry() {
-Observable<T> retry(final long count) {
-Observable<T> retry(Func2<Integer, Throwable, Boolean> predicate) {
-Observable<T> retryWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) {
-Observable<T> retryWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler, Scheduler scheduler) {
-Observable<T> sample(long period, TimeUnit unit) {
-Observable<T> sample(long period, TimeUnit unit, Scheduler scheduler) {
-<U> Observable<T> sample(Observable<U> sampler) {
-Observable<T> scan(Func2<T, T, T> accumulator) {
-<R> Observable<R> scan(R initialValue, Func2<R, ? super T, R> accumulator) {
-Observable<T> serialize() {
-Observable<T> share() {
-Observable<T> single() {
-Observable<T> single(Func1<? super T, Boolean> predicate) {
-Observable<T> singleOrDefault(T defaultValue) {
-Observable<T> singleOrDefault(T defaultValue, Func1<? super T, Boolean> predicate) {
-Observable<T> skip(int num) {
-Observable<T> skip(long time, TimeUnit unit) {
-Observable<T> skip(long time, TimeUnit unit, Scheduler scheduler) {
-Observable<T> skipLast(int count) {
-Observable<T> skipLast(long time, TimeUnit unit) {
-Observable<T> skipLast(long time, TimeUnit unit, Scheduler scheduler) {
-<U> Observable<T> skipUntil(Observable<U> other) {
-Observable<T> skipWhile(Func1<? super T, Boolean> predicate) {
-Observable<T> skipWhileWithIndex(Func2<? super T, Integer, Boolean> predicate) {
-Observable<T> startWith(Observable<T> values) {
-Observable<T> startWith(Iterable<T> values) {
-Observable<T> startWith(Iterable<T> values, Scheduler scheduler) {
-Observable<T> startWith(T t1) {
-Observable<T> startWith(T t1, T t2) {
-Observable<T> startWith(T t1, T t2, T t3) {
-Observable<T> startWith(T t1, T t2, T t3, T t4) {
-Observable<T> startWith(T t1, T t2, T t3, T t4, T t5) {
-Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6) {
-Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6, T t7) {
-Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6, T t7, T t8) {
-Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6, T t7, T t8, T t9) {
-Observable<T> startWith(T[] values, Scheduler scheduler) {
-Observable<T> subscribeOn(Scheduler scheduler) {
-<R> Observable<R> switchMap(Func1<? super T, ? extends Observable<? extends R>> func) {
-Observable<T> take(final int num) {
-Observable<T> take(long time, TimeUnit unit) {
-Observable<T> take(long time, TimeUnit unit, Scheduler scheduler) {
-Observable<T> takeFirst(Func1<? super T, Boolean> predicate) {
-Observable<T> takeLast(final int count) {
-Observable<T> takeLast(int count, long time, TimeUnit unit) {
-Observable<T> takeLast(int count, long time, TimeUnit unit, Scheduler scheduler) {
-Observable<T> takeLast(long time, TimeUnit unit) {
-Observable<T> takeLast(long time, TimeUnit unit, Scheduler scheduler) {
-Observable<List<T>> takeLastBuffer(int count) {
-Observable<List<T>> takeLastBuffer(int count, long time, TimeUnit unit) {
-Observable<List<T>> takeLastBuffer(int count, long time, TimeUnit unit, Scheduler scheduler) {
-Observable<List<T>> takeLastBuffer(long time, TimeUnit unit) {
-Observable<List<T>> takeLastBuffer(long time, TimeUnit unit, Scheduler scheduler) {
-<E> Observable<T> takeUntil(Observable<? extends E> other) {
-Observable<T> takeWhile(final Func1<? super T, Boolean> predicate) {
-Observable<T> takeWhileWithIndex(final Func2<? super T, ? super Integer, Boolean> predicate) {
-Observable<T> throttleFirst(long windowDuration, TimeUnit unit) {
-Observable<T> throttleFirst(long skipDuration, TimeUnit unit, Scheduler scheduler) {
-Observable<T> throttleLast(long intervalDuration, TimeUnit unit) {
-Observable<T> throttleLast(long intervalDuration, TimeUnit unit, Scheduler scheduler) {
-Observable<T> throttleWithTimeout(long timeout, TimeUnit unit) {
-Observable<T> throttleWithTimeout(long timeout, TimeUnit unit, Scheduler scheduler) {
-Observable<TimeInterval<T>> timeInterval() {
-Observable<TimeInterval<T>> timeInterval(Scheduler scheduler) {
-<U, V> Observable<T> timeout(Func0<? extends Observable<U>> firstTimeoutSelector, Func1<? super T, ? extends Observable<V>> timeoutSelector) {
-<U, V> Observable<T> timeout(Func0<? extends Observable<U>> firstTimeoutSelector, Func1<? super T, ? extends Observable<V>> timeoutSelector, Observable<? extends T> other) {
-<V> Observable<T> timeout(Func1<? super T, ? extends Observable<V>> timeoutSelector) {
-<V> Observable<T> timeout(Func1<? super T, ? extends Observable<V>> timeoutSelector, Observable<? extends T> other) {
-Observable<T> timeout(long timeout, TimeUnit timeUnit) {
-Observable<T> timeout(long timeout, TimeUnit timeUnit, Observable<? extends T> other) {
-Observable<T> timeout(long timeout, TimeUnit timeUnit, Observable<? extends T> other, Scheduler scheduler) {
-Observable<T> timeout(long timeout, TimeUnit timeUnit, Scheduler scheduler) {
-Observable<Timestamped<T>> timestamp() {
-Observable<Timestamped<T>> timestamp(Scheduler scheduler) {
-BlockingObservable<T> toBlockingObservable() {
-BlockingObservable<T> toBlocking() {
-Observable<List<T>> toList() {
-<K> Observable<Map<K, T>> toMap(Func1<? super T, ? extends K> keySelector) {
-<K, V> Observable<Map<K, V>> toMap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector) {
-<K, V> Observable<Map<K, V>> toMap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector, Func0<? extends Map<K, V>> mapFactory) {
-<K> Observable<Map<K, Collection<T>>> toMultimap(Func1<? super T, ? extends K> keySelector) {
-<K, V> Observable<Map<K, Collection<V>>> toMultimap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector) {
-<K, V> Observable<Map<K, Collection<V>>> toMultimap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector, Func0<? extends Map<K, Collection<V>>> mapFactory) {
-<K, V> Observable<Map<K, Collection<V>>> toMultimap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector, Func0<? extends Map<K, Collection<V>>> mapFactory, Func1<? super K, ? extends Collection<V>> collectionFactory) {
-Observable<List<T>> toSortedList() {
-Observable<List<T>> toSortedList(Func2<? super T, ? super T, Integer> sortFunction) {
-Observable<T> unsubscribeOn(Scheduler scheduler) {
-<TClosing> Observable<Observable<T>> window(Func0<? extends Observable<? extends TClosing>> closingSelector) {
-Observable<Observable<T>> window(int count) {
-Observable<Observable<T>> window(int count, int skip) {
-Observable<Observable<T>> window(long timespan, long timeshift, TimeUnit unit) {
-Observable<Observable<T>> window(long timespan, long timeshift, TimeUnit unit, Scheduler scheduler) {
-Observable<Observable<T>> window(long timespan, long timeshift, TimeUnit unit, int count, Scheduler scheduler) {
-Observable<Observable<T>> window(long timespan, TimeUnit unit) {
-Observable<Observable<T>> window(long timespan, TimeUnit unit, int count) {
-Observable<Observable<T>> window(long timespan, TimeUnit unit, int count, Scheduler scheduler) {
-Observable<Observable<T>> window(long timespan, TimeUnit unit, Scheduler scheduler) {
-<TOpening, TClosing> Observable<Observable<T>> window(Observable<? extends TOpening> windowOpenings, Func1<? super TOpening, ? extends Observable<? extends TClosing>> closingSelector) {
-<U> Observable<Observable<T>> window(Observable<U> boundary) {
-<T2, R> Observable<R> zip(Iterable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) {
-<T2, R> Observable<R> zipWith(Iterable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) {
-<T2, R> Observable<R> zip(Observable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) {
-<T2, R> Observable<R> zipWith(Observable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) {
+<R> Observable<R> mergeMapIterable(Func1<? super T, ? extends Iterable<? extends R>> collectionSelector) 
+<U, R> Observable<R> mergeMapIterable(<U, R> Observable<R> mergeMap(Func1<? super T, ? extends Observable<? extends U>> collectionSelector,            Func2<? super T, ? super U, ? extends R> resultSelector)
+Observable<T> mergeWith(Observable<? extends T> t1) 
+<TIntermediate, TResult> Observable<TResult> multicast( Func0<? extends Subject<? super T, ? extends TIntermediate>> subjectFactory,             Func1<? super Observable<TIntermediate>, ? extends Observable<TResult>> selector)
+<R> ConnectableObservable<R> multicast( Subject<? super T, ? extends R> subject) 
+<R> ConnectableObservable<R> multicast(Func0<? extends Subject<? super T, ? extends R>> subjectFactory) 
+Observable<T> observeOn(Scheduler scheduler) 
+<R> Observable<R> ofType( Class<R> klass) 
+Observable<T> onBackpressureBuffer() 
+Observable<T> onBackpressureDrop() 
+Observable<T> onErrorResumeNext( Func1<Throwable, ? extends Observable<? extends T>> resumeFunction) 
+Observable<T> onErrorResumeNext( Observable<? extends T> resumeSequence) 
+Observable<T> onErrorReturn(Func1<Throwable, ? extends T> resumeFunction) 
+Observable<T> onErrorFlatMap( Func1<OnErrorThrowable, ? extends Observable<? extends T>> resumeFunction) 
+Observable<T> onExceptionResumeNext( Observable<? extends T> resumeSequence) 
+<R> Observable<R> parallel(Func1<Observable<T>, Observable<R>> f) 
+<R> Observable<R> parallel( Func1<Observable<T>, Observable<R>> f,  Scheduler s) 
+ConnectableObservable<T> publish() 
+<R> Observable<R> publish(Func1<? super Observable<T>, ? extends Observable<R>> selector) 
+<R> Observable<R> publish(Func1<? super Observable<T>, ? extends Observable<R>> selector,  T initialValue) 
+ConnectableObservable<T> publish( T initialValue) 
+ConnectableObservable<T> publishLast() 
+<R> Observable<R> publishLast(Func1<? super Observable<T>, ? extends Observable<R>> selector) 
+Observable<T> reduce(Func2<T, T, T> accumulator) 
+<R> Observable<R> reduce(R initialValue, Func2<R, ? super T, R> accumulator) 
+Observable<T> repeat() 
+Observable<T> repeat(Scheduler scheduler) 
+Observable<T> repeat( long count) 
+Observable<T> repeat( long count, Scheduler scheduler) 
+Observable<T> repeatWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler, Scheduler scheduler) 
+Observable<T> repeatWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) 
+ConnectableObservable<T> replay() 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector,  int bufferSize) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, int bufferSize, long time, TimeUnit unit) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector,  int bufferSize,  long time,  TimeUnit unit,  Scheduler scheduler) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector,  int bufferSize,  Scheduler scheduler) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector, long time, TimeUnit unit) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector,  long time,  TimeUnit unit,  Scheduler scheduler) 
+<R> Observable<R> replay(Func1<? super Observable<T>, ? extends Observable<R>> selector,  Scheduler scheduler) 
+ConnectableObservable<T> replay( int bufferSize) 
+ConnectableObservable<T> replay(int bufferSize, long time, TimeUnit unit) 
+ConnectableObservable<T> replay( int bufferSize,  long time,  TimeUnit unit,  Scheduler scheduler) 
+ConnectableObservable<T> replay( int bufferSize,  Scheduler scheduler) 
+ConnectableObservable<T> replay(long time, TimeUnit unit) 
+ConnectableObservable<T> replay( long time,  TimeUnit unit,  Scheduler scheduler) 
+ConnectableObservable<T> replay( Scheduler scheduler) 
+Observable<T> retry() 
+Observable<T> retry( long count) 
+Observable<T> retry(Func2<Integer, Throwable, Boolean> predicate) 
+Observable<T> retryWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) 
+Observable<T> retryWhen(Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler, Scheduler scheduler) 
+Observable<T> sample(long period, TimeUnit unit) 
+Observable<T> sample(long period, TimeUnit unit, Scheduler scheduler) 
+<U> Observable<T> sample(Observable<U> sampler) 
+Observable<T> scan(Func2<T, T, T> accumulator) 
+<R> Observable<R> scan(R initialValue, Func2<R, ? super T, R> accumulator) 
+Observable<T> serialize() 
+Observable<T> share() 
+Observable<T> single() 
+Observable<T> single(Func1<? super T, Boolean> predicate) 
+Observable<T> singleOrDefault(T defaultValue) 
+Observable<T> singleOrDefault(T defaultValue, Func1<? super T, Boolean> predicate) 
+Observable<T> skip(int num) 
+Observable<T> skip(long time, TimeUnit unit) 
+Observable<T> skip(long time, TimeUnit unit, Scheduler scheduler) 
+Observable<T> skipLast(int count) 
+Observable<T> skipLast(long time, TimeUnit unit) 
+Observable<T> skipLast(long time, TimeUnit unit, Scheduler scheduler) 
+<U> Observable<T> skipUntil(Observable<U> other) 
+Observable<T> skipWhile(Func1<? super T, Boolean> predicate) 
+Observable<T> skipWhileWithIndex(Func2<? super T, Integer, Boolean> predicate) 
+Observable<T> startWith(Observable<T> values) 
+Observable<T> startWith(Iterable<T> values) 
+Observable<T> startWith(Iterable<T> values, Scheduler scheduler) 
+Observable<T> startWith(T t1) 
+Observable<T> startWith(T t1, T t2) 
+Observable<T> startWith(T t1, T t2, T t3) 
+Observable<T> startWith(T t1, T t2, T t3, T t4) 
+Observable<T> startWith(T t1, T t2, T t3, T t4, T t5) 
+Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6) 
+Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6, T t7) 
+Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6, T t7, T t8) 
+Observable<T> startWith(T t1, T t2, T t3, T t4, T t5, T t6, T t7, T t8, T t9) 
+Observable<T> startWith(T[] values, Scheduler scheduler) 
+Observable<T> subscribeOn(Scheduler scheduler) 
+<R> Observable<R> switchMap(Func1<? super T, ? extends Observable<? extends R>> func) 
+Observable<T> take( int num) 
+Observable<T> take(long time, TimeUnit unit) 
+Observable<T> take(long time, TimeUnit unit, Scheduler scheduler) 
+Observable<T> takeFirst(Func1<? super T, Boolean> predicate) 
+Observable<T> takeLast( int count) 
+Observable<T> takeLast(int count, long time, TimeUnit unit) 
+Observable<T> takeLast(int count, long time, TimeUnit unit, Scheduler scheduler) 
+Observable<T> takeLast(long time, TimeUnit unit) 
+Observable<T> takeLast(long time, TimeUnit unit, Scheduler scheduler) 
+Observable<List<T>> takeLastBuffer(int count) 
+Observable<List<T>> takeLastBuffer(int count, long time, TimeUnit unit) 
+Observable<List<T>> takeLastBuffer(int count, long time, TimeUnit unit, Scheduler scheduler) 
+Observable<List<T>> takeLastBuffer(long time, TimeUnit unit) 
+Observable<List<T>> takeLastBuffer(long time, TimeUnit unit, Scheduler scheduler) 
+<E> Observable<T> takeUntil(Observable<? extends E> other) 
+Observable<T> takeWhile( Func1<? super T, Boolean> predicate) 
+Observable<T> takeWhileWithIndex( Func2<? super T, ? super Integer, Boolean> predicate) 
+Observable<T> throttleFirst(long windowDuration, TimeUnit unit) 
+Observable<T> throttleFirst(long skipDuration, TimeUnit unit, Scheduler scheduler) 
+Observable<T> throttleLast(long intervalDuration, TimeUnit unit) 
+Observable<T> throttleLast(long intervalDuration, TimeUnit unit, Scheduler scheduler) 
+Observable<T> throttleWithTimeout(long timeout, TimeUnit unit) 
+Observable<T> throttleWithTimeout(long timeout, TimeUnit unit, Scheduler scheduler) 
+Observable<TimeInterval<T>> timeInterval() 
+Observable<TimeInterval<T>> timeInterval(Scheduler scheduler) 
+<U, V> Observable<T> timeout(Func0<? extends Observable<U>> firstTimeoutSelector, Func1<? super T, ? extends Observable<V>> timeoutSelector) 
+<U, V> Observable<T> timeout(Func0<? extends Observable<U>> firstTimeoutSelector, Func1<? super T, ? extends Observable<V>> timeoutSelector, Observable<? extends T> other) 
+<V> Observable<T> timeout(Func1<? super T, ? extends Observable<V>> timeoutSelector) 
+<V> Observable<T> timeout(Func1<? super T, ? extends Observable<V>> timeoutSelector, Observable<? extends T> other) 
+Observable<T> timeout(long timeout, TimeUnit timeUnit) 
+Observable<T> timeout(long timeout, TimeUnit timeUnit, Observable<? extends T> other) 
+Observable<T> timeout(long timeout, TimeUnit timeUnit, Observable<? extends T> other, Scheduler scheduler) 
+Observable<T> timeout(long timeout, TimeUnit timeUnit, Scheduler scheduler) 
+Observable<Timestamped<T>> timestamp() 
+Observable<Timestamped<T>> timestamp(Scheduler scheduler) 
+BlockingObservable<T> toBlockingObservable() 
+BlockingObservable<T> toBlocking() 
+Observable<List<T>> toList() 
+<K> Observable<Map<K, T>> toMap(Func1<? super T, ? extends K> keySelector) 
+<K, V> Observable<Map<K, V>> toMap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector) 
+<K, V> Observable<Map<K, V>> toMap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector, Func0<? extends Map<K, V>> mapFactory) 
+<K> Observable<Map<K, Collection<T>>> toMultimap(Func1<? super T, ? extends K> keySelector) 
+<K, V> Observable<Map<K, Collection<V>>> toMultimap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector) 
+<K, V> Observable<Map<K, Collection<V>>> toMultimap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector, Func0<? extends Map<K, Collection<V>>> mapFactory) 
+<K, V> Observable<Map<K, Collection<V>>> toMultimap(Func1<? super T, ? extends K> keySelector, Func1<? super T, ? extends V> valueSelector, Func0<? extends Map<K, Collection<V>>> mapFactory, Func1<? super K, ? extends Collection<V>> collectionFactory) 
+Observable<List<T>> toSortedList() 
+Observable<List<T>> toSortedList(Func2<? super T, ? super T, Integer> sortFunction) 
+Observable<T> unsubscribeOn(Scheduler scheduler) 
+<TClosing> Observable<Observable<T>> window(Func0<? extends Observable<? extends TClosing>> closingSelector) 
+Observable<Observable<T>> window(int count) 
+Observable<Observable<T>> window(int count, int skip) 
+Observable<Observable<T>> window(long timespan, long timeshift, TimeUnit unit) 
+Observable<Observable<T>> window(long timespan, long timeshift, TimeUnit unit, Scheduler scheduler) 
+Observable<Observable<T>> window(long timespan, long timeshift, TimeUnit unit, int count, Scheduler scheduler) 
+Observable<Observable<T>> window(long timespan, TimeUnit unit) 
+Observable<Observable<T>> window(long timespan, TimeUnit unit, int count) 
+Observable<Observable<T>> window(long timespan, TimeUnit unit, int count, Scheduler scheduler) 
+Observable<Observable<T>> window(long timespan, TimeUnit unit, Scheduler scheduler) 
+<TOpening, TClosing> Observable<Observable<T>> window(Observable<? extends TOpening> windowOpenings, Func1<? super TOpening, ? extends Observable<? extends TClosing>> closingSelector) 
+<U> Observable<Observable<T>> window(Observable<U> boundary) 
+<T2, R> Observable<R> zip(Iterable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) 
+<T2, R> Observable<R> zipWith(Iterable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) 
+<T2, R> Observable<R> zip(Observable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) 
+<T2, R> Observable<R> zipWith(Observable<? extends T2> other, Func2<? super T, ? super T2, ? extends R> zipFunction) 
