@@ -1,4 +1,4 @@
 rxjava-parallel
 ===============
 
-implements a ParallelObservable as experimentation
+implements a ParallelObservable as an experiment
