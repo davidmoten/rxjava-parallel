@@ -43,7 +43,7 @@ public class Generator {
 		}
 
 		// prints the resulting compilation unit to default system output
-		System.out.println(cu.toString());
+//		System.out.println(cu.toString());
 
 		// visit and print the methods names
 		new MethodVisitor(lines).visit(cu, null);
