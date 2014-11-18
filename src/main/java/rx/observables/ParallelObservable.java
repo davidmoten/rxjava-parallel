@@ -1,10 +1,14 @@
-package rx;
+package rx.observables;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import rx.Notification;
+import rx.Observable;
+import rx.Observer;
+import rx.Scheduler;
 import rx.Observable.Operator;
 import rx.Observable.Transformer;
 import rx.functions.Action0;
@@ -72,7 +76,11 @@ public class ParallelObservable<T> {
 	}
 
 	public Observable<T> flatten() {
-		return source.flatMap(Functions.<Observable<T>> identity());
+		return source.flatMap(new Func1<Observable<T>,Observable<T>>() {
+			@Override
+			public Observable<T> call(Observable<T> o) {
+				return o;
+			}});
 	}
 
 	/*****************************************************************
@@ -283,15 +291,15 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final <R> ParallelObservable<R> collect(final R state,
-			final Action2<R, ? super T> collector) {
-		return create(new Func1<Observable<T>, Observable<R>>() {
-			@Override
-			public Observable<R> call(Observable<T> o) {
-				return o.collect(state, collector);
-			}
-		});
-	}
+//	public final <R> ParallelObservable<R> collect(final R state,
+//			final Action2<R, ? super T> collector) {
+//		return create(new Func1<Observable<T>, Observable<R>>() {
+//			@Override
+//			public Observable<R> call(Observable<T> o) {
+//				return o.collect(state, collector);
+//			}
+//		});
+//	}
 
 	public final <R> ParallelObservable<R> concatMap(
 			final Func1<? super T, ? extends Observable<? extends R>> func) {
@@ -714,31 +722,6 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final <TKey, TDuration> ParallelObservable<GroupedObservable<TKey, T>> groupByUntil(
-			final Func1<? super T, ? extends TKey> keySelector,
-			final Func1<? super GroupedObservable<TKey, T>, ? extends Observable<? extends TDuration>> durationSelector) {
-		return create(new Func1<Observable<T>, Observable<GroupedObservable<TKey, T>>>() {
-			@Override
-			public Observable<GroupedObservable<TKey, T>> call(Observable<T> o) {
-				return o.groupByUntil(keySelector, durationSelector);
-			}
-		});
-	}
-
-	public final <TKey, TValue, TDuration> ParallelObservable<GroupedObservable<TKey, TValue>> groupByUntil(
-			final Func1<? super T, ? extends TKey> keySelector,
-			final Func1<? super T, ? extends TValue> valueSelector,
-			final Func1<? super GroupedObservable<TKey, TValue>, ? extends Observable<? extends TDuration>> durationSelector) {
-		return create(new Func1<Observable<T>, Observable<GroupedObservable<TKey, TValue>>>() {
-			@Override
-			public Observable<GroupedObservable<TKey, TValue>> call(
-					Observable<T> o) {
-				return o.groupByUntil(keySelector, valueSelector,
-						durationSelector);
-			}
-		});
-	}
-
 	public final <T2, D1, D2, R> ParallelObservable<R> groupJoin(
 			final Observable<T2> right,
 			final Func1<? super T, ? extends Observable<D1>> leftDuration,
@@ -832,11 +815,11 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final ParallelObservable<Long> longCount() {
+	public final ParallelObservable<Long> countLong() {
 		return create(new Func1<Observable<T>, Observable<Long>>() {
 			@Override
 			public Observable<Long> call(Observable<T> o) {
-				return o.longCount();
+				return o.countLong();
 			}
 		});
 	}
@@ -866,17 +849,6 @@ public class ParallelObservable<T> {
 			@Override
 			public Observable<T> call(Observable<T> o) {
 				return o.mergeWith(t1);
-			}
-		});
-	}
-
-	public final <TIntermediate, TResult> ParallelObservable<TResult> multicast(
-			final Func0<? extends Subject<? super T, ? extends TIntermediate>> subjectFactory,
-			final Func1<? super Observable<TIntermediate>, ? extends Observable<TResult>> selector) {
-		return create(new Func1<Observable<T>, Observable<TResult>>() {
-			@Override
-			public Observable<TResult> call(Observable<T> o) {
-				return o.multicast(subjectFactory, selector);
 			}
 		});
 	}
@@ -957,26 +929,6 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final <R> ParallelObservable<R> parallel(
-			final Func1<Observable<T>, Observable<R>> f) {
-		return create(new Func1<Observable<T>, Observable<R>>() {
-			@Override
-			public Observable<R> call(Observable<T> o) {
-				return o.parallel(f);
-			}
-		});
-	}
-
-	public final <R> ParallelObservable<R> parallel(
-			final Func1<Observable<T>, Observable<R>> f, final Scheduler s) {
-		return create(new Func1<Observable<T>, Observable<R>>() {
-			@Override
-			public Observable<R> call(Observable<T> o) {
-				return o.parallel(f, s);
-			}
-		});
-	}
-
 	public final <R> ParallelObservable<R> publish(
 			final Func1<? super Observable<T>, ? extends Observable<R>> selector) {
 		return create(new Func1<Observable<T>, Observable<R>>() {
@@ -987,26 +939,6 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final <R> ParallelObservable<R> publish(
-			final Func1<? super Observable<T>, ? extends Observable<R>> selector,
-			final T initialValue) {
-		return create(new Func1<Observable<T>, Observable<R>>() {
-			@Override
-			public Observable<R> call(Observable<T> o) {
-				return o.publish(selector, initialValue);
-			}
-		});
-	}
-
-	public final <R> ParallelObservable<R> publishLast(
-			final Func1<? super Observable<T>, ? extends Observable<R>> selector) {
-		return create(new Func1<Observable<T>, Observable<R>>() {
-			@Override
-			public Observable<R> call(Observable<T> o) {
-				return o.publishLast(selector);
-			}
-		});
-	}
 
 	public final ParallelObservable<T> reduce(final Func2<T, T, T> accumulator) {
 		return create(new Func1<Observable<T>, Observable<T>>() {
@@ -1064,26 +996,26 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final ParallelObservable<T> repeatWhen(
-			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler,
-			final Scheduler scheduler) {
-		return create(new Func1<Observable<T>, Observable<T>>() {
-			@Override
-			public Observable<T> call(Observable<T> o) {
-				return o.repeatWhen(notificationHandler, scheduler);
-			}
-		});
-	}
+//	public final ParallelObservable<T> repeatWhen(
+//			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler,
+//			final Scheduler scheduler) {
+//		return create(new Func1<Observable<T>, Observable<T>>() {
+//			@Override
+//			public Observable<T> call(Observable<T> o) {
+//				return o.repeatWhen(notificationHandler, scheduler);
+//			}
+//		});
+//	}
 
-	public final ParallelObservable<T> repeatWhen(
-			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) {
-		return create(new Func1<Observable<T>, Observable<T>>() {
-			@Override
-			public Observable<T> call(Observable<T> o) {
-				return o.repeatWhen(notificationHandler);
-			}
-		});
-	}
+//	public final ParallelObservable<T> repeatWhen(
+//			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) {
+//		return create(new Func1<Observable<T>, Observable<T>>() {
+//			@Override
+//			public Observable<T> call(Observable<T> o) {
+//				return o.repeatWhen(notificationHandler);
+//			}
+//		});
+//	}
 
 	public final <R> ParallelObservable<R> replay(
 			final Func1<? super Observable<T>, ? extends Observable<R>> selector) {
@@ -1201,26 +1133,26 @@ public class ParallelObservable<T> {
 		});
 	}
 
-	public final ParallelObservable<T> retryWhen(
-			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) {
-		return create(new Func1<Observable<T>, Observable<T>>() {
-			@Override
-			public Observable<T> call(Observable<T> o) {
-				return o.retryWhen(notificationHandler);
-			}
-		});
-	}
+//	public final ParallelObservable<T> retryWhen(
+//			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler) {
+//		return create(new Func1<Observable<T>, Observable<T>>() {
+//			@Override
+//			public Observable<T> call(Observable<T> o) {
+//				return o.retryWhen(notificationHandler);
+//			}
+//		});
+//	}
 
-	public final ParallelObservable<T> retryWhen(
-			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler,
-			final Scheduler scheduler) {
-		return create(new Func1<Observable<T>, Observable<T>>() {
-			@Override
-			public Observable<T> call(Observable<T> o) {
-				return o.retryWhen(notificationHandler, scheduler);
-			}
-		});
-	}
+//	public final ParallelObservable<T> retryWhen(
+//			final Func1<? super Observable<? extends Notification<?>>, ? extends Observable<?>> notificationHandler,
+//			final Scheduler scheduler) {
+//		return create(new Func1<Observable<T>, Observable<T>>() {
+//			@Override
+//			public Observable<T> call(Observable<T> o) {
+//				return o.retryWhen(notificationHandler, scheduler);
+//			}
+//		});
+//	}
 
 	public final ParallelObservable<T> sample(final long period,
 			final TimeUnit unit) {
@@ -1398,16 +1330,6 @@ public class ParallelObservable<T> {
 			@Override
 			public Observable<T> call(Observable<T> o) {
 				return o.skipWhile(predicate);
-			}
-		});
-	}
-
-	public final ParallelObservable<T> skipWhileWithIndex(
-			final Func2<? super T, Integer, Boolean> predicate) {
-		return create(new Func1<Observable<T>, Observable<T>>() {
-			@Override
-			public Observable<T> call(Observable<T> o) {
-				return o.skipWhileWithIndex(predicate);
 			}
 		});
 	}
@@ -1691,16 +1613,6 @@ public class ParallelObservable<T> {
 			@Override
 			public Observable<T> call(Observable<T> o) {
 				return o.takeWhile(predicate);
-			}
-		});
-	}
-
-	public final ParallelObservable<T> takeWhileWithIndex(
-			final Func2<? super T, ? super Integer, Boolean> predicate) {
-		return create(new Func1<Observable<T>, Observable<T>>() {
-			@Override
-			public Observable<T> call(Observable<T> o) {
-				return o.takeWhileWithIndex(predicate);
 			}
 		});
 	}

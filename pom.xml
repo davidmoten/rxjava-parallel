@@ -39,7 +39,6 @@
         <m3.site.version>3.3</m3.site.version>
         <changelog.version>2.2</changelog.version>
         <coverage.reports.dir>${project.build.directory}/target/coverage-reports</coverage.reports.dir>
-        <rxjava.version>0.20.4</rxjava.version>
 
     </properties>
 
@@ -85,9 +84,9 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.netflix.rxjava</groupId>
-            <artifactId>rxjava-core</artifactId>
-            <version>${rxjava.version}</version>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Test Dependencies -->
